@@ -4,60 +4,47 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-   /* private float ballSpeed = 1;
+    public GameObject storage;
 
-    public bool inHands = true;
-    private bool dribbleStart = false;
-
-    private Vector3 startingPos;
+    private Vector3 storagePos;
 
     private void Awake()
     {
-        startingPos = transform.position;
+       //sets physics off 
+        Physics.autoSimulation = false;
 
     }
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            dribbleStart = true;
-            Debug.Log("pressed");
-        }
-        if (dribbleStart == true)
-        {
-            Dribble();
-            dribbleStart = false;
-        }
-        
-        transform.Translate(Vector3.down * ballSpeed * Time.deltaTime);
+        Dribble();
+        storagePos = storage.transform.position;
     }
-
+    
     private void Dribble()
     {
-        if (inHands)
+        if (Input.GetKeyUp(KeyCode.Space))
         {
-            transform.Translate(Vector3.down * ballSpeed * Time.deltaTime);
-            Debug.Log("Dropping");
-
-
-        }
-        else if (inHands == false)
-        {
-            Vector3 returning = (startingPos - transform.position).normalized;
-            transform.position += returning * ballSpeed * Time.deltaTime;
-            Debug.Log("returning");
-            inHands = true;
+            print("dribble");
+            StartCoroutine(Bounce());
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Floor")
+        if (collision.gameObject.tag == "Player")
         {
-            inHands = false;
-            Debug.Log("collided");
+            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
         }
     }
-*/
+
+
+    //switches between physics on and off for a second
+    IEnumerator Bounce()
+    {
+        Physics.autoSimulation = true;
+        yield return new WaitForSeconds(1);
+        Physics.autoSimulation = false;
+        transform.position = storagePos;
+    }
 }
