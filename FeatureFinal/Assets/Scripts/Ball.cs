@@ -11,7 +11,7 @@ public class Ball : MonoBehaviour
     private void Awake()
     {
        //sets physics off 
-        Physics.autoSimulation = false;
+       this.GetComponent<Rigidbody>().isKinematic = true;
 
     }
 
@@ -42,9 +42,9 @@ public class Ball : MonoBehaviour
     //switches between physics on and off for a second
     IEnumerator Bounce()
     {
-        Physics.autoSimulation = true;
+        this.GetComponent<Rigidbody>().isKinematic = false;
         yield return new WaitForSeconds(1);
-        Physics.autoSimulation = false;
+        this.GetComponent<Rigidbody>().isKinematic = true;
         transform.position = storagePos;
     }
 }

@@ -454,6 +454,7 @@ GameObject:
   - component: {fileID: 208091148}
   - component: {fileID: 208091147}
   - component: {fileID: 208091146}
+  - component: {fileID: 208091149}
   m_Layer: 0
   m_Name: Player Container
   m_TagString: Player
@@ -527,6 +528,20 @@ Transform:
   - {fileID: 99008943}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &208091149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208091145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b001f66fadbc5f1489428c52b013feed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storagePoint: {fileID: 655021173}
+  basketBall: {fileID: 938834869}
 --- !u!1 &655021173
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,7 +716,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
