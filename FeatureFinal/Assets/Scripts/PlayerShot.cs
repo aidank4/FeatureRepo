@@ -31,11 +31,11 @@ public class PlayerShot : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            print("shooting");
+            Shooting();
         }
 
         //If slingshot is not in aiming mode dont run this code
@@ -74,7 +74,6 @@ public class PlayerShot : MonoBehaviour
             //no more aiming mode
             GameObject.Find("ball").GetComponent<Ball>().inHands = false;
             ballShot = true;
-
             //TELL PROJECTILE TO LISTEN TO PHYSICS SYSTEM
             basketBall.GetComponent<Rigidbody>().isKinematic = false;
 

@@ -6,10 +6,14 @@ public class Spawner : MonoBehaviour
 {
     public GameObject player;
 
+    private bool shot = false;
+
     //spawn player and ball to start at random position
     private void Awake()
     {
         SpawnPlayer();
+
+        shot = player.GetComponent<PlayerShot>().ballShot;
     }
 
 
@@ -25,18 +29,21 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (GameObject.Find("Player").GetComponent<PlayerShot>().ballShot == true)
+
+        //shot = player.GetComponent<PlayerShot>().ballShot;
+        if (shot == true)
         {
             print("shot = true");
             StartCoroutine(Respawn());
-        }*/
+            player.GetComponent<PlayerShot>().ballShot = false;
+        }
     }
 
     //If player has shot respawn after 5 seconds
     IEnumerator Respawn()
     {
         print("respawning");
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         SpawnPlayer();
     }
 }
