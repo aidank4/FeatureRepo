@@ -8,24 +8,30 @@ public class Ball : MonoBehaviour
 
     private Vector3 storagePos;
 
+    public bool inHands = true;
+
     private void Awake()
     {
        //sets physics off 
        this.GetComponent<Rigidbody>().isKinematic = true;
-
     }
 
     private void Update()
     {
         Dribble();
         storagePos = storage.transform.position;
+
+        if (inHands == false)
+        {
+            transform.parent = null;
+        }
+
     }
     
     private void Dribble()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space) && inHands == true)
         {
-            print("dribble");
             StartCoroutine(Bounce());
         }
     }

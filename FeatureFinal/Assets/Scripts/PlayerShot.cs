@@ -1,24 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerShot : MonoBehaviour
 {
-    public GameObject storagePoint;
-    public GameObject basketBall;
+    private GameObject storagePoint;
+    private GameObject basketBall;
+
     private Vector3 storagePos;
-    private bool shootingMode = false;
-    private float velocityMult = 6f;
+
+    private float velocityMult = 20f;
+
+    public bool ballShot = false;
 
     private void Awake()
     {
+        storagePoint = GameObject.Find("BallStorage");
         storagePos = storagePoint.transform.position;
+        basketBall = GameObject.Find("ball");
         basketBall.GetComponent<Rigidbody>().isKinematic = true;
+        
     }
 
     private void Shooting()
     {
-        shootingMode = true;
         basketBall.GetComponent<Rigidbody>().isKinematic = true;
     }
 
@@ -29,7 +35,7 @@ public class PlayerShot : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            Shooting();
+            print("shooting");
         }
 
         //If slingshot is not in aiming mode dont run this code
@@ -58,19 +64,22 @@ public class PlayerShot : MonoBehaviour
         //move the projectile to this new position
         //Vector3 ballPos = storagePos + mouseDelta;
         //basketBall.transform.position = ballPos;
+        
 
         //lets fire that thing now
        if (Input.GetMouseButtonUp(0))
         {
+            //print("shot");
             //LMB was released
             //no more aiming mode
-            shootingMode = false;
+            GameObject.Find("ball").GetComponent<Ball>().inHands = false;
+            ballShot = true;
 
             //TELL PROJECTILE TO LISTEN TO PHYSICS SYSTEM
             basketBall.GetComponent<Rigidbody>().isKinematic = false;
 
             //lets shoot that thing
-            basketBall.GetComponent<Rigidbody>().velocity = mouseDelta * velocityMult;
+            basketBall.GetComponent<Rigidbody>().velocity = -mouseDelta * velocityMult;
 
             //NOTE GAMEOBJECTS BETWEEN SCRIPTS
             //tell the camera to follow the projectile
