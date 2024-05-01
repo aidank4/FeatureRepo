@@ -4,46 +4,58 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+
+
+
     public GameObject player;
 
-    private bool shot = false;
+    public bool shotBall = false;
 
     //spawn player and ball to start at random position
     private void Awake()
     {
-        SpawnPlayer();
-
-        shot = player.GetComponent<PlayerShot>().ballShot;
+        SpawnPlayer(player);
     }
 
 
     //Spawn player
-    public void SpawnPlayer()
+    public void SpawnPlayer(GameObject newPlayer)
     {
-        Vector3 spawnPos;
-        spawnPos.z = Random.Range(0 , 10);
-        spawnPos.x = Random.Range(0 , 10);
-        spawnPos.y = 0.7f;
-        GameObject spawnedPlayer = Instantiate(player, spawnPos, transform.rotation);
+        if(newPlayer = null)
+      {
+            Destroy(newPlayer);
+        }
+
+        newPlayer = player;
+
+        if(newPlayer != null)
+       { 
+            Vector3 spawnPos;
+            spawnPos.z = Random.Range(0, 10);
+            spawnPos.x = Random.Range(0, 10);
+            spawnPos.y = 0.7f;
+            GameObject spawnedPlayer = Instantiate(player, spawnPos, transform.rotation);
+        }
+
     }
     // Update is called once per frame
     void Update()
     {
-
-        //shot = player.GetComponent<PlayerShot>().ballShot;
-        if (shot == true)
+        if (shotBall == true)
         {
-            print("shot = true");
+            print("shot yes ty");
             StartCoroutine(Respawn());
-            player.GetComponent<PlayerShot>().ballShot = false;
+            shotBall = false;
         }
     }
+
 
     //If player has shot respawn after 5 seconds
     IEnumerator Respawn()
     {
+        //Destroy(oldPlayer); oldPlayer = null;
         print("respawning");
-        yield return new WaitForSeconds(2);
-        SpawnPlayer();
+        yield return new WaitForSeconds(5);
+        SpawnPlayer(player);
     }
 }

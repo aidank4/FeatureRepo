@@ -1,10 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class PlayerShot : MonoBehaviour
 {
+    //singleton
+   /* private static PlayerShot _instance;
+    public static PlayerShot Instance
+    {
+        get { return _instance; }
+    }*/
+    //singleton
+
+
+
     private GameObject storagePoint;
     private GameObject basketBall;
 
@@ -12,10 +24,23 @@ public class PlayerShot : MonoBehaviour
 
     private float velocityMult = 20f;
 
-    public bool ballShot = false;
+    
 
     private void Awake()
     {
+        //singleton
+       /*if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+            print("slaughtered");
+        }
+        else
+        {
+            _instance = this;
+            print("set yo");
+        }*/
+        //singleton
+
         storagePoint = GameObject.Find("BallStorage");
         storagePos = storagePoint.transform.position;
         basketBall = GameObject.Find("ball");
@@ -31,7 +56,7 @@ public class PlayerShot : MonoBehaviour
 
 
     // Update is called once per frame
-    public void Update()
+    private void Update()
     {
         if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -73,7 +98,7 @@ public class PlayerShot : MonoBehaviour
             //LMB was released
             //no more aiming mode
             GameObject.Find("ball").GetComponent<Ball>().inHands = false;
-            ballShot = true;
+            GameObject.Find("Player Container").GetComponent<Spawner>().shotBall = true;
             //TELL PROJECTILE TO LISTEN TO PHYSICS SYSTEM
             basketBall.GetComponent<Rigidbody>().isKinematic = false;
 
