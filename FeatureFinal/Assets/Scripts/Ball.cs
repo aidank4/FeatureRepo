@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public GameObject storage;
+    public GameObject playerCam;
 
     private Vector3 storagePos;
 
@@ -24,6 +25,11 @@ public class Ball : MonoBehaviour
         if (inHands == false)
         {
             transform.parent = null;
+        }
+        if (inHands == true)
+        {
+            this.gameObject.transform.parent = playerCam.transform;
+            //print("childed");
         }
 
     }

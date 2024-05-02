@@ -8,34 +8,36 @@ public class Spawner : MonoBehaviour
 
 
     public GameObject player;
+    public GameObject basketball;
+    public GameObject basketballStorage;
 
     public bool shotBall = false;
 
-    //spawn player and ball to start at random position
+    private Quaternion startingRot;
+   // private Quaternion ballStartingRot;
     private void Awake()
     {
-        SpawnPlayer(player);
+        startingRot = player.transform.rotation;
+       // ballStartingRot = basketball.transform.rotation;
     }
 
-
-    //Spawn player
-    public void SpawnPlayer(GameObject newPlayer)
+    public void LocationSwitch()
     {
-        if(newPlayer = null)
-      {
-            Destroy(newPlayer);
-        }
+        Vector3 spawnPos;
+        spawnPos.z = Random.Range(0, 10);
+        spawnPos.x = Random.Range(0, 10);
+        spawnPos.y = 0.7f;
 
-        newPlayer = player;
+        player.transform.position = spawnPos;
+        player.transform.rotation = startingRot;
 
-        if(newPlayer != null)
-       { 
-            Vector3 spawnPos;
-            spawnPos.z = Random.Range(0, 10);
-            spawnPos.x = Random.Range(0, 10);
-            spawnPos.y = 0.7f;
-            GameObject spawnedPlayer = Instantiate(player, spawnPos, transform.rotation);
-        }
+        basketball.transform.position = basketballStorage.transform.position;
+        //basketball.transform.rotation = ballStartingRot;
+
+        basketball.GetComponent<Rigidbody>().isKinematic = true;
+        basketball.GetComponent<Ball>().inHands = true;
+
+        print("swithced spot");
 
     }
     // Update is called once per frame
@@ -56,6 +58,6 @@ public class Spawner : MonoBehaviour
         //Destroy(oldPlayer); oldPlayer = null;
         print("respawning");
         yield return new WaitForSeconds(5);
-        SpawnPlayer(player);
+        LocationSwitch();
     }
 }

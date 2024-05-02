@@ -84,7 +84,7 @@ public class PlayerShot : MonoBehaviour
             mouseDelta.Normalize();
             mouseDelta *= maxMagnitude;
         }
-
+        
         //we calculated the new position
         //move the projectile to this new position
         //Vector3 ballPos = storagePos + mouseDelta;
@@ -110,7 +110,7 @@ public class PlayerShot : MonoBehaviour
             //FollowCam.Instance.poi = basketBall;
 
             // slingshot has to forget about the projectile for future projectiles
-            basketBall = null;
+            //basketBall = null;
         }
         
     }
