@@ -37,7 +37,7 @@ public class Spawner : MonoBehaviour
         basketball.GetComponent<Rigidbody>().isKinematic = true;
         basketball.GetComponent<Ball>().inHands = true;
 
-        print("swithced spot");
+        //print("swithced spot");
 
     }
     // Update is called once per frame
@@ -45,7 +45,7 @@ public class Spawner : MonoBehaviour
     {
         if (shotBall == true)
         {
-            print("shot yes ty");
+            //print("shot yes ty");
             StartCoroutine(Respawn());
             shotBall = false;
         }
@@ -56,7 +56,7 @@ public class Spawner : MonoBehaviour
     IEnumerator Respawn()
     {
         //Destroy(oldPlayer); oldPlayer = null;
-        print("respawning");
+       // print("respawning");
         yield return new WaitForSeconds(5);
         LocationSwitch();
     }

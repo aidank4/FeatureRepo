@@ -416,6 +416,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2766893223646604964, guid: 47862155c9b87d94dbd0723f406ef2ae,
+        type: 3}
+      propertyPath: basketBall
+      value: 
+      objectReference: {fileID: 2133987528}
+    - target: {fileID: 2766893223646604964, guid: 47862155c9b87d94dbd0723f406ef2ae,
+        type: 3}
+      propertyPath: storagePoint
+      value: 
+      objectReference: {fileID: 179745319}
     - target: {fileID: 4895492821224241711, guid: 47862155c9b87d94dbd0723f406ef2ae,
         type: 3}
       propertyPath: player
