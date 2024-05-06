@@ -16,7 +16,7 @@ public class PlayerShot : MonoBehaviour
     private Vector3 originalStoragePos;
     private Vector3 newStoragePos;
 
-    private float velocityMult = 15f;
+    private float velocityMult = 10f;
 
     //timer
     private Stopwatch stopWatch = new Stopwatch();
@@ -51,17 +51,23 @@ public class PlayerShot : MonoBehaviour
         basketBall.GetComponent<Rigidbody>().isKinematic = false;
         //shoot the ball
         basketBall.GetComponent<Rigidbody>().velocity = mouseDelta * (speedRatio * velocityMult);
+
+
+        //change ball physics to be less bouncy more realistic
+        basketBall.GetComponent<SphereCollider>().material.dynamicFriction = 0.6f;
+        basketBall.GetComponent<SphereCollider>().material.staticFriction = 0.6f;
+        //basketBall.GetComponent<SphereCollider>().material.frictionCombine = 
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && basketBall.GetComponent<Ball>().inHands == true)
         {
             Shooting();
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && basketBall.GetComponent<Ball>().inHands == true)
         {
             Shot();
         }

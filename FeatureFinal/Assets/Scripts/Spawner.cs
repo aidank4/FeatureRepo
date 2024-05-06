@@ -59,5 +59,6 @@ public class Spawner : MonoBehaviour
        // print("respawning");
         yield return new WaitForSeconds(5);
         LocationSwitch();
+        basketball.GetComponent<Ball>().scored = false;
     }
 }

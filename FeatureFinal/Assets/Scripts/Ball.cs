@@ -6,10 +6,12 @@ public class Ball : MonoBehaviour
 {
     public GameObject storage;
     public GameObject playerCam;
+    public GameObject scoreBox;
 
     private Vector3 storagePos;
 
     public bool inHands = true;
+    public bool scored = false;
 
     private void Awake()
     {
@@ -58,5 +60,26 @@ public class Ball : MonoBehaviour
         yield return new WaitForSeconds(1);
         this.GetComponent<Rigidbody>().isKinematic = true;
         transform.position = storagePos;
+    }
+
+    IEnumerator CheatStop()
+    {
+        scoreBox.gameObject.SetActive(false);
+        yield return new WaitForSeconds(2);
+        scoreBox.gameObject.SetActive(true);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "score")
+        {
+            Debug.Log("SCORE!!");
+            scored = true;
+        }
+        if (other.gameObject.tag == "deny")
+        {
+            StartCoroutine(CheatStop());
+            Debug.Log("denied");
+        }
     }
 }
