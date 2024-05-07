@@ -75,6 +75,7 @@ public class Ball : MonoBehaviour
         {
             Debug.Log("SCORE!!");
             scored = true;
+            this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         if (other.gameObject.tag == "deny")
         {

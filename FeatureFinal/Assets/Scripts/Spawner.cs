@@ -24,9 +24,9 @@ public class Spawner : MonoBehaviour
     public void LocationSwitch()
     {
         Vector3 spawnPos;
-        spawnPos.z = Random.Range(0, 10);
-        spawnPos.x = Random.Range(0, 10);
-        spawnPos.y = 0.7f;
+        spawnPos.z = Random.Range(0, 11);
+        spawnPos.x = Random.Range(0, 6.5f);
+        spawnPos.y = 0;
 
         player.transform.position = spawnPos;
         player.transform.rotation = startingRot;

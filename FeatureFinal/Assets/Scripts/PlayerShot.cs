@@ -51,12 +51,6 @@ public class PlayerShot : MonoBehaviour
         basketBall.GetComponent<Rigidbody>().isKinematic = false;
         //shoot the ball
         basketBall.GetComponent<Rigidbody>().velocity = mouseDelta * (speedRatio * velocityMult);
-
-
-        //change ball physics to be less bouncy more realistic
-        basketBall.GetComponent<SphereCollider>().material.dynamicFriction = 0.6f;
-        basketBall.GetComponent<SphereCollider>().material.staticFriction = 0.6f;
-        //basketBall.GetComponent<SphereCollider>().material.frictionCombine = 
     }
 
     // Update is called once per frame
