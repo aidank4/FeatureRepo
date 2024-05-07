@@ -24,9 +24,20 @@ public class Spawner : MonoBehaviour
     public void LocationSwitch()
     {
         Vector3 spawnPos;
-        spawnPos.z = Random.Range(0, 11);
-        spawnPos.x = Random.Range(0, 6.5f);
-        spawnPos.y = 0;
+        
+        //less chance to spawn farther than the 3 point line
+        float randomNum = Random.Range(0, 50);
+        if (randomNum < 6)
+        {
+            spawnPos.z = Random.Range(0, 6);
+        }
+        else
+        {
+            spawnPos.z = Random.Range(6, 12);
+        }
+
+        spawnPos.x = Random.Range(-6.5f, 6.5f);
+        spawnPos.y = 0.7f;
 
         player.transform.position = spawnPos;
         player.transform.rotation = startingRot;
