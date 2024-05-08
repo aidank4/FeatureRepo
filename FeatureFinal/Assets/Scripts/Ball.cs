@@ -88,6 +88,7 @@ public class Ball : MonoBehaviour
             score += 1;
             scored = true;
             this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            StartCoroutine(CheatStop());
         }
         if (other.gameObject.tag == "deny")
         {

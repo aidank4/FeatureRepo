@@ -11,6 +11,11 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
+
+    private void Awake()
+    {
+        Cursor.visible = true;
+    }
     public void Play()
     {
         Debug.Log("play");

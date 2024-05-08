@@ -1,22 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MouseView : MonoBehaviour
 {
-    private float maxMouseSensitivity = 500f;
-    private float mouseSensitivity;
+    private float mouseSensitivity = 300f;
 
     public Transform playerBody;
 
     float xRotation = 0f;
     // Start is called before the first frame update
-    void Start()
+
+    //private Vector3 _viewInput;
+
+    void Awake()
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
-        mouseSensitivity = maxMouseSensitivity;
     }
+
+   /* private void Viewing(InputAction.CallbackContext context)
+    {
+        _viewInput = context.ReadValue<Vector3>();
+        Vector3 mouseViewing = new Vector3(_viewInput.x, _viewInput.y, _viewInput.z);
+        mouseViewing = mouseViewing.normalized;
+        mouseViewing = playerBody.transform.rotation * mouseViewing;
+    }*/
 
     // Update is called once per frame
     void Update()
