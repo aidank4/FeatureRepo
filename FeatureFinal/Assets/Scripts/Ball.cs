@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class Ball : MonoBehaviour
 
     public bool inHands = true;
     public bool scored = false;
+
+    public int score = 0;
+    public int shotsTaken = 0;
 
     private void Awake()
     {
@@ -32,6 +36,13 @@ public class Ball : MonoBehaviour
         {
             this.gameObject.transform.parent = playerCam.transform;
             //print("childed");
+        }
+
+        //win check
+        if (score >= 10)
+        {
+            Debug.Log("You Win");
+            SceneManager.LoadScene(3);
         }
 
     }
@@ -74,6 +85,7 @@ public class Ball : MonoBehaviour
         if (other.gameObject.tag == "score")
         {
             Debug.Log("SCORE!!");
+            score += 1;
             scored = true;
             this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }

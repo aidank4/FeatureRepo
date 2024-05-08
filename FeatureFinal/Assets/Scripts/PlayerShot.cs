@@ -45,6 +45,8 @@ public class PlayerShot : MonoBehaviour
         float speedRatio = 1 - timeRatio;
         //ball is out of our hands so it should be un childed
         basketBall.GetComponent<Ball>().inHands = false;
+        //print a shot taken in UI
+        basketBall.GetComponent<Ball>().shotsTaken += 1;
         //tell the spawner weve shot
         GameObject.Find("Player Container").GetComponent<Spawner>().shotBall = true;
         //turn the physics back on
