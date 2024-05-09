@@ -895,11 +895,14 @@ MonoBehaviour:
   m_text: 'Controls:
 
 
-    Hold Mouse1 to begin shooting
+    Hold Left Click to begin shooting
 
 
-    Release Mouse1 to
-    shoot
+    Release Left Click
+    to shoot
+
+
+    Right Click for instant respawn
 
 
     Score 10 shots to Win!'

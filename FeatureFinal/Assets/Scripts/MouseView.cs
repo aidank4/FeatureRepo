@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Kelly, Aidan
+/// 05/08/2024
+/// Controls mouse view input
+/// </summary>
+
 public class MouseView : MonoBehaviour
 {
     private float mouseSensitivity = 300f;
@@ -33,6 +39,10 @@ public class MouseView : MonoBehaviour
     {
         Vision();
     }
+    
+    /// <summary>
+    /// Controls mouse viewing
+    /// </summary>
     public void Vision()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;

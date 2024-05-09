@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Kelly, Aidan
+/// 05/08/2024
+/// displays UI
+/// </summary>
+
 public class UIControl : MonoBehaviour
 {
     public Ball ball;

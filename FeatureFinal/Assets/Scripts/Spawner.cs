@@ -1,26 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+
+/// <summary>
+/// Kelly, Aidan
+/// 05/08/2024
+/// Controls player spawn placement between shots
+/// </summary>
 
 public class Spawner : MonoBehaviour
 {
-
-
-
     public GameObject player;
     public GameObject basketball;
     public GameObject basketballStorage;
 
     public bool shotBall = false;
+    private bool respawning = false;
+    private bool isRunning = false;
 
     private Quaternion startingRot;
-   // private Quaternion ballStartingRot;
     private void Awake()
     {
         startingRot = player.transform.rotation;
-       // ballStartingRot = basketball.transform.rotation;
     }
 
+    /// <summary>
+    /// sets a random location within the court for the player to spawn. higher chance of spawning closer to the basket
+    /// </summary>
     public void LocationSwitch()
     {
         Vector3 spawnPos;
@@ -36,7 +43,7 @@ public class Spawner : MonoBehaviour
             spawnPos.z = Random.Range(6, 12);
         }
 
-        spawnPos.x = Random.Range(-6.5f, 6.5f);
+        spawnPos.x = Random.Range(-7.5f, 7.5f);
         spawnPos.y = 0.7f;
 
         player.transform.position = spawnPos;
@@ -48,28 +55,43 @@ public class Spawner : MonoBehaviour
         basketball.GetComponent<Rigidbody>().isKinematic = true;
         basketball.GetComponent<Ball>().inHands = true;
 
-        //print("swithced spot");
-
     }
     // Update is called once per frame
     void Update()
     {
-        if (shotBall == true)
+        if (shotBall == true && isRunning == false)
         {
-            //print("shot yes ty");
             StartCoroutine(Respawn());
             shotBall = false;
         }
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            
+            shotBall = false;
+            respawning = true;
+            LocationSwitch();
+        }
     }
-
 
     //If player has shot respawn after 5 seconds
     IEnumerator Respawn()
     {
-        //Destroy(oldPlayer); oldPlayer = null;
-       // print("respawning");
+        isRunning = true;
+        if (respawning == true)
+        {
+            respawning = false;
+        }
         yield return new WaitForSeconds(5);
-        LocationSwitch();
-        basketball.GetComponent<Ball>().scored = false;
+        if (respawning == true)
+        {
+            respawning = false;
+            StopCoroutine(Respawn());
+        }
+        else
+        {
+            respawning = false;
+            LocationSwitch();
+        }
+        isRunning = false;
     }
 }

@@ -16,18 +16,22 @@ public class ButtonManager : MonoBehaviour
     {
         Cursor.visible = true;
     }
+    
+    //play button
     public void Play()
     {
         Debug.Log("play");
         SceneManager.LoadScene(2);
     }
 
+    //control page button
     public void Controls()
     {
         Debug.Log("controls");
         SceneManager.LoadScene(1);
     }
 
+    //quit button
     public void Quit()
     {
         Debug.Log("quit");
