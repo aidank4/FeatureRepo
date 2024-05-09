@@ -1,6 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+/// <summary>
+/// Kelly, Aidan
+/// 05/08/2024
+/// Controls ball events
+/// </summary>
 
 public class Ball : MonoBehaviour
 {
@@ -11,7 +18,9 @@ public class Ball : MonoBehaviour
     private Vector3 storagePos;
 
     public bool inHands = true;
-    public bool scored = false;
+
+    public int score = 0;
+    public int shotsTaken = 0;
 
     private void Awake()
     {
@@ -21,7 +30,6 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        Dribble();
         storagePos = storage.transform.position;
 
         if (inHands == false)
@@ -34,15 +42,24 @@ public class Ball : MonoBehaviour
             //print("childed");
         }
 
+        //win check
+        if (score >= 10)
+        {
+            Debug.Log("You Win");
+            SceneManager.LoadScene(3);
+        }
+
     }
     
-    private void Dribble()
+    //will come back to the dribllein the future!
+    /*private void Dribble()
     {
         if (Input.GetKeyUp(KeyCode.Space) && inHands == true)
         {
             StartCoroutine(Bounce());
         }
     }
+    */
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -51,9 +68,11 @@ public class Ball : MonoBehaviour
             Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
         }
     }
+   
 
-
+    //will come back
     //switches between physics on and off for a second
+    /*
     IEnumerator Bounce()
     {
         this.GetComponent<Rigidbody>().isKinematic = false;
@@ -61,7 +80,12 @@ public class Ball : MonoBehaviour
         this.GetComponent<Rigidbody>().isKinematic = true;
         transform.position = storagePos;
     }
+    */
 
+    /// <summary>
+    /// Turns off the score collider for a brief second to deny double shots and under the hoop shots
+    /// </summary>
+    /// <returns></returns>
     IEnumerator CheatStop()
     {
         scoreBox.gameObject.SetActive(false);
@@ -74,8 +98,9 @@ public class Ball : MonoBehaviour
         if (other.gameObject.tag == "score")
         {
             Debug.Log("SCORE!!");
-            scored = true;
+            score += 1;
             this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            StartCoroutine(CheatStop());
         }
         if (other.gameObject.tag == "deny")
         {
