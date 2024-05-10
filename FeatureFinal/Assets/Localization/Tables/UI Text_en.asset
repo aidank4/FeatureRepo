@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UI Text_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: ec77d25eba721994e99e6710a0a3091e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 502577836032
+    m_Localized: Hoop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1657131315200
+    m_Localized: Hard!!!!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2072900087808
+    m_Localized: Controls!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2803031945216
+    m_Localized: Play!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3011404967936
+    m_Localized: Quit!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4014963503104
+    m_Localized: Tips and Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4601524334592
+    m_Localized: 'Controls:
+
+
+      Hold Left Click to begin shooting
+
+
+      Release
+      Left Click to shoot
+
+
+      Right Click for instant respawn
+
+
+      Score 10
+      shots to Win!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6554186756096
+    m_Localized: 'Tips:
+
+
+      Shot speed is determined by two things:
+
+
+      The
+      speed in which you release your shot
+
+
+      And the positional difference
+      between where you begin shooting and where you release
+
+
+      Have Fun!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7784875241472
+    m_Localized: Play Again!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8136500523008
+    m_Localized: Good Job!!!!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8388091654144
+    m_Localized: You Win!!!!!!!!!
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

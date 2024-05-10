@@ -5,13 +5,18 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+
+/// <summary>
+/// Kelly, Aidan
+/// 05/08/2024
+/// Controls player shooting
+/// </summary>
 
 public class PlayerShot : MonoBehaviour
 {
-
     public GameObject storagePoint;
     public GameObject basketBall;
+    public GameObject spawner;
 
     private Vector3 originalStoragePos;
     private Vector3 newStoragePos;
@@ -21,6 +26,9 @@ public class PlayerShot : MonoBehaviour
     //timer
     private Stopwatch stopWatch = new Stopwatch();
 
+    /// <summary>
+    /// When player begins their shot position is stored and a timer begins
+    /// </summary>
     private void Shooting()
     {
         //start timer for speed calculation
@@ -29,6 +37,9 @@ public class PlayerShot : MonoBehaviour
         originalStoragePos = storagePoint.transform.position;
     }
 
+    /// <summary>
+    /// Player has shot, a speed of the shot is decided and the ball physics are enabled
+    /// </summary>
     private void Shot()
     {
         newStoragePos = storagePoint.transform.position;
@@ -45,8 +56,10 @@ public class PlayerShot : MonoBehaviour
         float speedRatio = 1 - timeRatio;
         //ball is out of our hands so it should be un childed
         basketBall.GetComponent<Ball>().inHands = false;
+        //print a shot taken in UI
+        basketBall.GetComponent<Ball>().shotsTaken += 1;
         //tell the spawner weve shot
-        GameObject.Find("Player Container").GetComponent<Spawner>().shotBall = true;
+        spawner.GetComponent<Spawner>().shotBall = true;
         //turn the physics back on
         basketBall.GetComponent<Rigidbody>().isKinematic = false;
         //shoot the ball
