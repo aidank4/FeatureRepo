@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -16,7 +17,19 @@ public class ButtonManager : MonoBehaviour
     {
         Cursor.visible = true;
     }
+
+    //change language to english
+    public void English()
+    {
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[0];
+    }
     
+    //change language to spanish
+    public void Spanish()
+    {
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[1];
+    }
+
     //play button
     public void Play()
     {
