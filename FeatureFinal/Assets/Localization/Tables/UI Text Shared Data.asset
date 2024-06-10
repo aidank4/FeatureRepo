@@ -59,6 +59,14 @@ MonoBehaviour:
     m_Key: Win
     m_Metadata:
       m_Items: []
+  - m_Id: 240445518589952
+    m_Key: 'Shots Scored:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 240603509633024
+    m_Key: 'Shots Taken:'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

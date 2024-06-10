@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: ec77d25eba721994e99e6710a0a3091e, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 5745526843511144450
   m_TableData:
   - m_Id: 502577836032
     m_Localized: Hoop
@@ -90,6 +91,20 @@ MonoBehaviour:
     m_Localized: You Win!!!!!!!!!
     m_Metadata:
       m_Items: []
+  - m_Id: 240445518589952
+    m_Localized: 'Shots Scored: {score}'
+    m_Metadata:
+      m_Items:
+      - rid: 5745526843511144450
+  - m_Id: 240603509633024
+    m_Localized: 'Shots Taken: {taken}'
+    m_Metadata:
+      m_Items:
+      - rid: 5745526843511144450
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 5745526843511144450
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0030b915afda00000030b9ded3da0000

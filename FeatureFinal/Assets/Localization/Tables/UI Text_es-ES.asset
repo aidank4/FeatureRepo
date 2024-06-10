@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: es-ES
   m_SharedData: {fileID: 11400000, guid: ec77d25eba721994e99e6710a0a3091e, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 5745526843511144451
   m_TableData:
   - m_Id: 502577836032
     m_Localized: Aro
@@ -83,6 +84,20 @@ MonoBehaviour:
     m_Localized: Ganaste!!!!!!!!!
     m_Metadata:
       m_Items: []
+  - m_Id: 240445518589952
+    m_Localized: 'Tiros Marcaros: {score}'
+    m_Metadata:
+      m_Items:
+      - rid: 5745526843511144451
+  - m_Id: 240603509633024
+    m_Localized: 'Tiros Tomadas: {taken}'
+    m_Metadata:
+      m_Items:
+      - rid: 5745526843511144451
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 5745526843511144451
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0030b915afda00000030b9ded3da0000
